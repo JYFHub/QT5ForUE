@@ -3,6 +3,7 @@
 using UnrealBuildTool;
 using System.IO;
 using System;
+using System.Reflection;
 
 public class Qt5 : ModuleRules
 {
@@ -71,8 +72,9 @@ public class Qt5 : ModuleRules
         if (Target.Type == TargetType.Editor)
         {
             Console.WriteLine("Editor CopyBin File To ProjectBinariesPath = {0}", ProjectBinariesPath);
+            Console.WriteLine("RelativeEnginePath is {0}", Assembly.GetExecutingAssembly());
             CopyDirectory(Path.Combine(ThirdPartyPath, "bin"),ProjectBinariesPath);
-            CopyDirectory(Path.Combine(ThirdPartyPath, "plugins"), ProjectBinariesPath);
+            //CopyDirectory(Path.Combine(ThirdPartyPath, "plugins"), ProjectBinariesPath);
         }
         if(Target.Type == TargetType.Game)
         {
